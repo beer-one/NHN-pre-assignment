@@ -7,26 +7,20 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Signup</title>
+	<title>Login</title>
 </head>
 <body>
-<h1>회원 가입</h1>
+<h1>로그인</h1>
 <br><br><br><br>
 
-<form action="signup" method="post">
-	<h5>이름</h5>
-	<input type="text" name="name">
-	<br><br>
+<form action="login" method="post">
+	
 	<h5>이메일</h5>
 	<input type="text" name="email">
-	<br><br>
+	<br>
 	<h5>암호</h5>
 	<input type="password" name="password">
-	<br>
-	<h5>암호 확인</h5>
-	<input type="password" name="password-check">
-	<br><br>
-	<input type="submit" value="완료">
+	<input type="submit" value="로그인">
 	<input type="button" value="취소" onclick='window.history.back()'>
 
 </form>

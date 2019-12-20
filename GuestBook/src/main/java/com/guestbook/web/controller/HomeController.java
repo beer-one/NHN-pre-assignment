@@ -32,11 +32,6 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest request, HttpServletResponse response) {
 		
-		List<Member> memberList = memberDao.getAllMembers();
-		
-		for(Member m : memberList)
-			System.out.println(m.getEmail());
-		
 		return "home";
 	}
 	

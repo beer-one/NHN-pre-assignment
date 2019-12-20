@@ -1,9 +1,8 @@
 package com.guestbook.web.controller;
 
-import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +17,7 @@ import com.guestbook.web.service.MemberService;
 import com.guestbook.web.vo.Member;
 
 @Controller
-public class SignUpController {
+public class AuthController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -52,6 +51,37 @@ public class SignUpController {
 		
 		return "auth/SignupResult";
 	}
+	
+	@RequestMapping(value = "/auth/login", method = RequestMethod.GET)
+	public String loginForm(HttpServletRequest request, HttpServletResponse response) {
+		return "auth/Login";
+	}
+	
+	@RequestMapping(value = "/auth/login", method = RequestMethod.POST)
+	public String login(HttpServletRequest request, Model model) {
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		
+		try {
+			Member member = memberService.login(email, password);
+			HttpSession session = request.getSession();
+			session.setAttribute("member", member);
+			
+			return "redirect:/";
+			
+		}  catch (LoginFailException e) {
+			return "auth/LoginFail";
+		}
+	}
+	
+	@RequestMapping(value = "/auth/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		
+		session.invalidate();
+		return "redirect:/";
+	}
+	
 	
 	
 }
