@@ -65,6 +65,7 @@ public class AuthController {
 		try {
 			Member member = memberService.login(email, password);
 			HttpSession session = request.getSession();
+			member.setPassword(null);
 			session.setAttribute("member", member);
 			
 			return "redirect:/";
