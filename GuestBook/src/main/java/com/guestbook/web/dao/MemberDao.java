@@ -9,6 +9,7 @@ public interface MemberDao {
 	List<Member> getAllMembers();
 	Member findByEmailAndPassword(Map<String, String> params);
 	String findByEmail(String email);
+	String findEmailByNo(int no);
 	void addMember(Member member);
 	void deleteMember(Member member);
 }

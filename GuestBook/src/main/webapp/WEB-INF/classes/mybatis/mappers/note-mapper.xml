@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.guestbook.web.dao.NoteDao">
+
+	<!-- select id="getAllNotes" resultType="Note">
+		select title, context, create_date as createDate, corrected_date as correctedDate, member_no as memberNo from NOTES;
+	</select -->
+	
+	<select id="getAllNotes" resultType="Note">
+		select n.title as title, n.context as context, n.created_date as createdDate, n.corrected_date as correctedDate, m.email as email from NOTES as n left outer join MEMBERS as m on m.no = n.member_no order by n.created_date desc
+	</select>
+	
+	<insert id="addNote" parameterType="Note">
+		insert into NOTES (TITLE, CONTEXT, CREATED_DATE, CORRECTED_DATE, MEMBER_NO) values (#{title}, #{context}, #{createdDate}, #{correctedDate}, (select no from MEMBERS where email = #{email}))
+	</insert>
+	
+</mapper>

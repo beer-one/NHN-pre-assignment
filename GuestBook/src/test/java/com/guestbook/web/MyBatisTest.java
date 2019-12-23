@@ -3,12 +3,12 @@ package com.guestbook.web;
 
 import static org.junit.Assert.assertEquals;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.guestbook.web.dao.MemberDao;
+import com.guestbook.web.dao.NoteDao;
+import com.guestbook.web.service.NoteService;
 import com.guestbook.web.vo.Member;
+import com.guestbook.web.vo.Note;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/**/root-context.xml"})
@@ -24,6 +27,12 @@ public class MyBatisTest {
 	
 	@Autowired
 	private MemberDao dao;
+	
+	@Autowired
+	private NoteDao notedao;
+	
+	@Autowired
+	private NoteService noteService;
 	
 	/*@Before
 	public void memberAddTest() throws Exception {
@@ -101,5 +110,23 @@ public class MyBatisTest {
 			assertEquals(null, email);
 		}
 	}*/
+	
+	@Test
+	public void selectAllNotes() {
+		List<Note> notes = noteService.getAllNotes();
+		
+		for (Note n : notes) {
+			System.out.println("title: " + n.getTitle() + ", context: " + n.getContext() + 
+					", createdDate: " + n.getCreatedDate() + ", email: " + n.getEmail());
+		}
+	}
+	
+	@Test
+	public void addNote() {
+		Timestamp t = new Timestamp(new Date().getTime());
+		
+		System.out.println(t);
+	}
+	
 
 }

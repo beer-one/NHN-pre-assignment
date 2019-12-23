@@ -26,6 +26,15 @@ public class MemberService {
 		return m;
 	}
 	
+	public boolean isExist(String email, String password) {
+		Map<String, String> params = new HashMap();
+		params.put("email", email);
+		params.put("password", password);
+		Member m = memberDao.findByEmailAndPassword(params);
+		
+		return m != null;
+	}
+	
 	public boolean isDuplicateEmail(String email) {
 		return memberDao.findByEmail(email) != null;
 	}

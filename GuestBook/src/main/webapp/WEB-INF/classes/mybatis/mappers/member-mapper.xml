@@ -17,6 +17,10 @@
 	<select id="findByEmail" resultType="String">
 		select email from MEMBERS where email = #{email}
 	</select>
+	
+	<select id="findEmailByNo" resultType="String">
+		select email from MEMBERS where no = #{no}
+	</select>
 
 	<insert id="addMember" parameterType="Member">
 		insert into MEMBERS (NAME, EMAIL, PASSWORD) values (#{name}, #{email}, #{password})

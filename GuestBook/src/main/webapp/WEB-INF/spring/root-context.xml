@@ -39,10 +39,16 @@
     	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
     
+    <bean id="noteDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    	<property name="mapperInterface" value="com.guestbook.web.dao.NoteDao"/>
+    	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+    
     <!-- Service -->
     
-    <bean id="memberService" class="com.guestbook.web.service.MemberService">
-    	
+    <bean id="memberService" class="com.guestbook.web.service.MemberService">   	
+    </bean>
+    <bean id="noteService" class="com.guestbook.web.service.NoteService">
     </bean>
     
 
