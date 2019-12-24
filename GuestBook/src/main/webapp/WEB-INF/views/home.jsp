@@ -39,7 +39,7 @@ List<Note> notes = (List<Note>)request.getAttribute("notes");
 	%>
 	<tr>
 		<td><%= i %></td>
-		<td><%= n.getTitle() %></td>
+		<td><a href="/web/note?no=<%= n.getNo() %>"><%= n.getTitle() %></a></td>
 		<td><%= n.getEmail() %></td>
 		<td><%= n.getCreatedDate() %></td>
 	</tr>

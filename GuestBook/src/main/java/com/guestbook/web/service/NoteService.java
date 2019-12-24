@@ -14,12 +14,18 @@ public class NoteService {
 	private NoteDao noteDao;
 	
 	public List<Note> getAllNotes() {
-		List<Note> notes = noteDao.getAllNotes();
-		
-		return notes;
+		return noteDao.getAllNotes();
 	}
 	
 	public void saveNote(Note note) {
 		noteDao.addNote(note);
+	}
+	
+	public Note findNote(int no) {
+		return noteDao.findByNo(no);
+	}
+	
+	public void updateNote(Note note) {
+		noteDao.updateNote(note);
 	}
 }

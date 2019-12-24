@@ -11,11 +11,21 @@
 	</select -->
 	
 	<select id="getAllNotes" resultType="Note">
-		select n.title as title, n.context as context, n.created_date as createdDate, n.corrected_date as correctedDate, m.email as email from NOTES as n left outer join MEMBERS as m on m.no = n.member_no order by n.created_date desc
+		select n.no as no, n.title as title, n.context as context, n.created_date as createdDate, n.corrected_date as correctedDate, m.email as email from NOTES as n left outer join MEMBERS as m on m.no = n.member_no order by n.created_date desc
+	</select>
+	
+	<select id="findByNo" resultType="Note">
+		select n.no as no, n.title as title, n.context as context, n.created_date as createdDate, n.corrected_date as correctedDate, m.email as email from NOTES as n left outer join MEMBERS as m on m.no = n.member_no where n.no = #{no}
 	</select>
 	
 	<insert id="addNote" parameterType="Note">
 		insert into NOTES (TITLE, CONTEXT, CREATED_DATE, CORRECTED_DATE, MEMBER_NO) values (#{title}, #{context}, #{createdDate}, #{correctedDate}, (select no from MEMBERS where email = #{email}))
 	</insert>
+	
+	<update id="updateNote" parameterType="Note">
+		update NOTES set title=#{title}, context=#{context}, corrected_date=#{correctedDate} where no=#{no}
+	</update>
+	
+	
 	
 </mapper>

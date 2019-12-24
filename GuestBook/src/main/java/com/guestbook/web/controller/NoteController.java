@@ -70,4 +70,48 @@ public class NoteController {
 		return "note/Check";
 	}
 	
+	@RequestMapping(value = "/note", method = RequestMethod.GET)
+	public String showNotePage(HttpServletRequest request, Model model) {
+		int no = Integer.parseInt(request.getParameter("no"));
+		Note note = noteService.findNote(no);
+		
+		model.addAttribute("note", note);
+		
+		return "note/NotePage";
+	}
+	
+	@RequestMapping(value = "/note/correct", method = RequestMethod.GET)
+	public String showCorrectNotePage(HttpServletRequest request, Model model) {
+		int no = Integer.parseInt(request.getParameter("no"));
+		Note note = noteService.findNote(no);
+		
+		model.addAttribute("note", note);
+		
+		return "note/Correct";
+	}
+	
+	@RequestMapping(value = "/note/correct", method = RequestMethod.POST)
+	public String correctNote(HttpServletRequest request, Model model) {
+		int no = Integer.parseInt(request.getParameter("no"));
+		Note note = noteService.findNote(no);
+		
+		String password = request.getParameter("password");
+		
+		if(memberService.isExist(note.getEmail(), password)) {
+			note = note.setTitle(request.getParameter("title"))
+					.setContext(request.getParameter("context"))
+					.setCorrectedDate(new Timestamp(new Date().getTime()));
+			
+			noteService.updateNote(note);
+			model.addAttribute("success", true);
+		} else {
+			model.addAttribute("success", false);
+		}
+		
+		return "note/CorrectCheck";
+		
+	}
+	
+	
+	
 }

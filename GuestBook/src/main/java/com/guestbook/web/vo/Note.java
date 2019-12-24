@@ -3,12 +3,20 @@ package com.guestbook.web.vo;
 import java.sql.Timestamp;
 
 public class Note {
+	private int no;
 	private String email;
 	private String title;
 	private String context;
 	private Timestamp createdDate;
 	private Timestamp correctedDate;
 	
+	public int getNo() {
+		return no;
+	}
+	public Note setNo(int no) {
+		this.no = no;
+		return this;
+	}
  	public String getEmail() {
 		return email;
 	}
