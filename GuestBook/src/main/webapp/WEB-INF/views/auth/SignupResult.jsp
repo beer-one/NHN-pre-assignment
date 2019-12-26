@@ -13,7 +13,7 @@
 	if(result.equals("success")) {
 %>
 		<script type="text/javascript">
-			alert("로그인 성공");
+			alert("회원가입 성공");
 			window.location.href="/web/"
 		</script>
 <% 
@@ -21,14 +21,14 @@
 	}
 	else {
 		String message;
-		if(result.equals("password"))
-			message = "패스워드가 일치하지 않습니다.";
+		if(result.equals("emailForm"))
+			message = "올바르지 않은 이메일 형식입니다.";
 		else
 			message = "이미 존재하는 이메일입니다.";
 %>
 	<script type="text/javascript">
 		var message = '<%= message %>';
-		alert("로그인 실패: " + message);
+		alert("회원가입 실패: " + message);
 		window.history.back();
 	</script>
 <% 

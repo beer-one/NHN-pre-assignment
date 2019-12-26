@@ -20,14 +20,22 @@
 <% 
 	}
 	else {
+		String reason = (String)request.getAttribute("reason");
+		if(reason.equals("emailForm")) {
 %>
-	<script type="text/javascript">
-		alert("등록되지 않은 이메일이거나 비밀번호가 일치하지 않습니다.");
-		window.history.back();
-	</script>
-<% 
-	}
-		
+			<script type="text/javascript">
+				alert("올바르지 않은 이메일 형식입니다.(Server))");
+				window.history.back();
+			</script>
+<% 		} else {
+%>	
+			<script type="text/javascript">
+				alert("등록되지 않은 이메일이거나 비밀번호가 일치하지 않습니다.");
+				window.history.back();
+			</script>
+<%
+		}
+	}		
 %>
 </body>
 </html>

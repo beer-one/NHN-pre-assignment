@@ -53,7 +53,13 @@ public class NoteController {
 			email = m.getEmail();
 		
 		System.out.println("email : " + email + ", password: " + password);
-		if(memberService.isExist(email, password)) {
+		
+		// 이메일 체크 (서버 부분)
+		if (!memberService.emailCheck(email)) {
+			model.addAttribute("note", null);
+			model.addAttribute("reason", "emailForm");
+		}
+		else if(memberService.isExist(email, password)) {
 			Note note = new Note().setEmail(email)
 								.setTitle(title)
 								.setContext(context)
@@ -65,6 +71,7 @@ public class NoteController {
 			
 		} else {
 			model.addAttribute("note", null);
+			model.addAttribute("reason", "password");
 		}
 		
 		return "note/Check";

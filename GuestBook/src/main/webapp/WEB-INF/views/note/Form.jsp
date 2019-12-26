@@ -15,16 +15,36 @@
 	Member member = (Member)session.getAttribute("member");
 %>
 
+<!-- 이메일이 올바른지 클라이언트에서 체크 -->
+<script type="text/javascript">
+function check() {
+	var member = <%= member %>;
+	
+	if(!member) {
+		var inputEmail = document.getElementById("emailText").value;
+		var emailPattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+		
+		if(emailPattern.test(inputEmail) == false) {
+			alert("올바르지 않은 이메일 형식입니다.(Client)");
+			
+		} else {
+			document.getElementById("form").submit();	
+		}
+	} else 
+		document.getElementById("form").submit();
+}
+</script>
+
 
 <h1>글 작성</h1>
 <br><br><br><br>
 
-<form action="/web/note" method="post">
+<form action="/web/note" method="post" id="form">
 	<h5>이메일</h5>
 	<%
 	if(member == null) {
 	%>
-	<input type="email" name="email">
+	<input type="email" name="email" id="emailText">
 	<%
 	} else { %>
 	<%=member.getEmail() %>
@@ -41,7 +61,7 @@
 	<textarea name="context" cols="60" rows="20"></textarea>
 	
 	<br>
-	<input type="submit" value="완료">
+	<input type="button" value="완료" onclick='check()'>
 	<input type="button" value="취소" onclick='window.history.back()'>
 </form>
 

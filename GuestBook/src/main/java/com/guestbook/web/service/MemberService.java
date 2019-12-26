@@ -2,6 +2,7 @@ package com.guestbook.web.service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,14 @@ public class MemberService {
 	
 	@Autowired
 	private MemberDao memberDao;
+	
+	public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+			"^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\\.[A-Za-z0-9\\-]+"
+	);
+	
+	public boolean emailCheck(String email) {
+		return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
+	}
 	
 	public Member login(String email, String password) throws LoginFailException {
 		Map<String, String> params = new HashMap();

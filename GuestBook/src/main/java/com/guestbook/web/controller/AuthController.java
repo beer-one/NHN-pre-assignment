@@ -39,16 +39,16 @@ public class AuthController {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		if(memberService.isDuplicateEmail(email)) 
-			model.addAttribute("result", "email");
+		if(!memberService.emailCheck(email)) 
+			model.addAttribute("result", "emailForm");
+		else if(memberService.isDuplicateEmail(email)) 
+			model.addAttribute("result", "duplidateEmail");
 		
-		else if(password.equals(request.getParameter("password-check"))) {
+		else {
 			memberService.signup(name, email, password);
 			model.addAttribute("result", "success");	
-		} else 
-			model.addAttribute("result", "password");
+		} 
 			
-		
 		return "auth/SignupResult";
 	}
 	
@@ -83,6 +83,8 @@ public class AuthController {
 		return "redirect:/";
 	}
 	
-	
+	private boolean emailFormCheck(String email) {
+		return false;
+	}
 	
 }
