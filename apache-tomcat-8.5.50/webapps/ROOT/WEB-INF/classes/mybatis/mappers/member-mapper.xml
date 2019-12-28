@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.guestbook.web.dao.MemberDao">
+
+	<select id="getAllMembers" resultType="Member">
+		select name, email from MEMBERS
+	</select>
+	
+	<select id="findByEmailAndPassword" resultType="Member">
+		select name, email from MEMBERS where email = #{email} and password = #{password}
+	</select>
+	
+	<select id="findByEmail" resultType="String">
+		select email from MEMBERS where email = #{email}
+	</select>
+	
+	<select id="findEmailByNo" resultType="String">
+		select email from MEMBERS where no = #{no}
+	</select>
+
+	<insert id="addMember" parameterType="Member">
+		insert into MEMBERS (NAME, EMAIL, PASSWORD) values (#{name}, #{email}, #{password})
+	</insert>
+	
+	<delete id="deleteMember" parameterType="Member">
+		delete from MEMBERS where EMAIL = #{email} and PASSWORD = #{password}
+	</delete>
+</mapper>

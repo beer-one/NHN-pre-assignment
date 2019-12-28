@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+	
+<configuration>
+	<typeAliases>
+		<typeAlias alias="Member" type="com.guestbook.web.vo.Member"/>
+		<typeAlias alias="Note" type="com.guestbook.web.vo.Note"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mybatis/mappers/member-mapper.xml"/>
+		<mapper resource="mybatis/mappers/note-mapper.xml"/>
+	</mappers>
+</configuration>

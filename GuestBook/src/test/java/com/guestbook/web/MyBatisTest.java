@@ -128,4 +128,30 @@ public class MyBatisTest {
 		
 		System.out.println(t);
 	}
+	
+	@Test
+	public void emailFormCheckTest() {
+		String email = "floidea@test.com";
+		
+		boolean result = checkEmail(email);
+		
+		assertEquals(true, result);
+		
+		
+		email = "asb11@test@test.com";
+		result = checkEmail(email);
+		
+		assertEquals(false, result);
+	}
+	public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+			"^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\\.[A-Za-z0-9\\-]+"
+	);
+
+	private boolean checkEmail(String email) {
+	    return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
+	}
+
+
+	
+
 }
