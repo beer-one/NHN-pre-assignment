@@ -9,6 +9,8 @@ public class Member {
 	
 	public Member setName(String name) { this.name = name; return this; }
 	
+	public String getPassword() { return password; }
+	
 	public Member setPassword(String password) { this.password = password; return this; }
 	
 	public String getEmail() { return email; }

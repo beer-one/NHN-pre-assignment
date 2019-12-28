@@ -106,8 +106,7 @@ public class NoteController {
 		
 		if(memberService.isExist(note.getEmail(), password)) {
 			note = note.setTitle(request.getParameter("title"))
-					.setContext(request.getParameter("context"))
-					.setCorrectedDate(new Timestamp(new Date().getTime()));
+					.setContext(request.getParameter("context"));
 			
 			noteService.updateNote(note);
 			model.addAttribute("success", true);

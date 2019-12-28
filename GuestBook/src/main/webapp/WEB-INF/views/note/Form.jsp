@@ -39,7 +39,7 @@ function check() {
 <h1>글 작성</h1>
 <br><br><br><br>
 
-<form action="/web/note" method="post" id="form">
+<form action="/note" method="post" id="form">
 	<h5>이메일</h5>
 	<%
 	if(member == null) {

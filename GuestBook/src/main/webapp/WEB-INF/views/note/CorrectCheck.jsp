@@ -14,7 +14,7 @@
 %>
 		<script type="text/javascript">
 			alert("수정 완료");
-			window.location.href="/web/"
+			window.location.href="/"
 		</script>
 <% 
 	}

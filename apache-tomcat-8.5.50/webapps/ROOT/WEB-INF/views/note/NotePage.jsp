@@ -32,7 +32,7 @@
 <%=note.getContext() %>
 </textarea>
 <br>
-<input type="button" value="수정" onclick='window.location.href="/web/note/correct?no=<%= note.getNo() %>"'>
+<input type="button" value="수정" onclick='window.location.href="/note/correct?no=<%= note.getNo() %>"'>
 <input type="button" value="뒤로가기" onclick='window.history.back()'>
 
 

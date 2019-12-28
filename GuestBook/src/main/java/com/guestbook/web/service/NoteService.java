@@ -1,5 +1,7 @@
 package com.guestbook.web.service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,7 @@ public class NoteService {
 	}
 	
 	public void updateNote(Note note) {
+		note = note.setCorrectedDate(new Timestamp(new Date().getTime()));
 		noteDao.updateNote(note);
 	}
 }

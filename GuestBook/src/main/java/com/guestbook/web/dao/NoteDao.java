@@ -9,4 +9,5 @@ public interface NoteDao {
 	Note findByNo(int no);
 	void addNote(Note note);
 	void updateNote(Note note);
+	void deleteNote(Note note);
 }

@@ -39,7 +39,7 @@ List<Note> notes = (List<Note>)request.getAttribute("notes");
 	%>
 	<tr>
 		<td><%= i %></td>
-		<td><a href="/web/note?no=<%= n.getNo() %>"><%= n.getTitle() %></a></td>
+		<td><a href="/note?no=<%= n.getNo() %>"><%= n.getTitle() %></a></td>
 		<td><%= n.getEmail() %></td>
 		<td><%= n.getCreatedDate() %></td>
 	</tr>
@@ -50,7 +50,7 @@ List<Note> notes = (List<Note>)request.getAttribute("notes");
 	</tbody>
 </table>
 <br>
-<input type="button" value="글 쓰기"onclick="window.location.href='/web/note/form'"/>
+<input type="button" value="글 쓰기"onclick="window.location.href='/note/form'"/>
 </h1>
 </body>
 </html>

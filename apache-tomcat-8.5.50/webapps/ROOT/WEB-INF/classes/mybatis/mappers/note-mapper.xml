@@ -26,6 +26,8 @@
 		update NOTES set title=#{title}, context=#{context}, corrected_date=#{correctedDate} where no=#{no}
 	</update>
 	
-	
+	<delete id="deleteNote" parameterType="Note">
+		delete from NOTES where no = #{no}
+	</delete>
 	
 </mapper>

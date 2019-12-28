@@ -14,7 +14,7 @@
 %>
 		<script type="text/javascript">
 			alert("회원가입 성공");
-			window.location.href="/web/"
+			window.location.href="/"
 		</script>
 <% 
 		System.out.println("Success");

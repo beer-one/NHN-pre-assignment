@@ -19,7 +19,7 @@
 <h1>글 작성</h1>
 <br><br><br><br>
 
-<form action="/web/note/correct?no=<%= note.getNo() %>" method="post">
+<form action="/note/correct?no=<%= note.getNo() %>" method="post">
 	<h5>이메일</h5>
 	<%= note.getEmail() %>
 	<br>
