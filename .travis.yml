@@ -1,0 +1,5 @@
+language: java
+script: "source apache-tomcat-8.5.50/bin/startup.sh"
+branches:
+    only:
+        - master
